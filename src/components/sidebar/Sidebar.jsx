@@ -57,43 +57,43 @@ const Sidebar = () => {
         <hr className='sidebarHr'/>
         <ul className='sidebarFriendList'>
           <li className='sidebarFriend'>
-            <img className='sidebarFriendImg' src='./assets/person/default.jpg' alt='image' />
+            <img className='sidebarFriendImg' src='./assets/person/default.jpg' alt='1' />
             <span className='sidebarFriendName'>Elvis Visinho</span>
           </li>
           <li className='sidebarFriend'>
-            <img className='sidebarFriendImg' src='./assets/person/default.jpg' alt='image' />
+            <img className='sidebarFriendImg' src='./assets/person/default.jpg' alt='1' />
             <span className='sidebarFriendName'>Elvis Visinho</span>
           </li>
           <li className='sidebarFriend'>
-            <img className='sidebarFriendImg' src='./assets/person/default.jpg' alt='image' />
+            <img className='sidebarFriendImg' src='./assets/person/default.jpg' alt='1' />
             <span className='sidebarFriendName'>Elvis Visinho</span>
           </li>
           <li className='sidebarFriend'>
-            <img className='sidebarFriendImg' src='./assets/person/default.jpg' alt='image' />
+            <img className='sidebarFriendImg' src='./assets/person/default.jpg' alt='1' />
             <span className='sidebarFriendName'>Elvis Visinho</span>
           </li>
           <li className='sidebarFriend'>
-            <img className='sidebarFriendImg' src='./assets/person/default.jpg' alt='image' />
+            <img className='sidebarFriendImg' src='./assets/person/default.jpg' alt='1' />
             <span className='sidebarFriendName'>Elvis Visinho</span>
           </li>
           <li className='sidebarFriend'>
-            <img className='sidebarFriendImg' src='./assets/person/default.jpg' alt='image' />
+            <img className='sidebarFriendImg' src='./assets/person/default.jpg' alt='1' />
             <span className='sidebarFriendName'>Elvis Visinho</span>
           </li>
           <li className='sidebarFriend'>
-            <img className='sidebarFriendImg' src='./assets/person/default.jpg' alt='image' />
+            <img className='sidebarFriendImg' src='./assets/person/default.jpg' alt='1' />
             <span className='sidebarFriendName'>Elvis Visinho</span>
           </li>
           <li className='sidebarFriend'>
-            <img className='sidebarFriendImg' src='./assets/person/default.jpg' alt='image' />
+            <img className='sidebarFriendImg' src='./assets/person/default.jpg' alt='1' />
             <span className='sidebarFriendName'>Elvis Visinho</span>
           </li>
           <li className='sidebarFriend'>
-            <img className='sidebarFriendImg' src='./assets/person/default.jpg' alt='image' />
+            <img className='sidebarFriendImg' src='./assets/person/default.jpg' alt='1' />
             <span className='sidebarFriendName'>Elvis Visinho</span>
           </li>
           <li className='sidebarFriend'>
-            <img className='sidebarFriendImg' src='./assets/person/default.jpg' alt='image' />
+            <img className='sidebarFriendImg' src='./assets/person/default.jpg' alt='1' />
             <span className='sidebarFriendName'>Elvis Visinho</span>
           </li>
         </ul>

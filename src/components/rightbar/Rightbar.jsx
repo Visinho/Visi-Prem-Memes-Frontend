@@ -9,7 +9,7 @@ const Rightbar = () => {
         <div className="birthdayContainer">
           <img className='birthdayImg' src='/assets/gift.png' alt='birthdayImg' />
           <span className='birthdayText'>
-            <b>Elvis Visinho</b>and <b>3 other friends</b> have a birthday today
+            <b>Elvis Visinho</b>and <b>3 other friends</b> have premium cruise for us today
           </span>
         </div>
         <img className='rightbarAd' src='/assets/person/Ultimate.png' alt='rightbarAd' />
