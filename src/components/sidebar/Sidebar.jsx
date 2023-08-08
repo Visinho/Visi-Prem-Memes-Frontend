@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 import "./sidebar.css";
-import { 
+import {
   RssFeed,
   Chat,
   PlayCircleFilledOutlined,
@@ -9,15 +9,16 @@ import {
   HelpOutline,
   WorkOutline,
   Event,
-  School } from '@material-ui/icons';
-  import { Users } from "../../dummyData";
-import Friends from '../friends/Friends';
+  School,
+} from "@material-ui/icons";
+import { Users } from "../../dummyData";
+import Friends from "../friends/Friends";
 
 const Sidebar = () => {
   return (
-    <div className='sidebar'>
-      <div className='sidebarWrapper'>
-      <ul className="sidebarList">
+    <div className="sidebar">
+      <div className="sidebarWrapper">
+        <ul className="sidebarList">
           <li className="sidebarListItem">
             <RssFeed className="sidebarIcon" />
             <span className="sidebarListItemText">Feed</span>
@@ -55,16 +56,16 @@ const Sidebar = () => {
             <span className="sidebarListItemText">Courses</span>
           </li>
         </ul>
-        <button className='sidebarButton'>Show More</button>
-        <hr className='sidebarHr'/>
-        <ul className='sidebarFriendList'>
-          {Users.map(u => (
+        <button className="sidebarButton">Show More</button>
+        <hr className="sidebarHr" />
+        <ul className="sidebarFriendList">
+          {Users.map((u) => (
             <Friends key={u.id} user={u} />
           ))}
         </ul>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Sidebar
+export default Sidebar;

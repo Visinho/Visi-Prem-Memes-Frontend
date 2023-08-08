@@ -25,7 +25,7 @@ const Rightbar = () => {
         />
         <h4 className="rightbarTitle">Online Friends</h4>
         <ul className="rightbarFriendList">
-          {Users.map(u => (
+          {Users.map((u) => (
             <Online key={u.id} user={u} />
           ))}
         </ul>
