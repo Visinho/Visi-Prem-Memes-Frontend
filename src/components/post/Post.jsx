@@ -20,7 +20,7 @@ const Post = () => {
             <span className="postText">
                 Remember to stay violent!!!
             </span>
-            <img className='postImg' src='assets/post/1.jpeg' alt='' />
+            <img className='postImg' src='assets/person/indianman.JPG' alt='' />
         </div>
         <div className='postBottom'>
             <div className="postBottomLeft">
