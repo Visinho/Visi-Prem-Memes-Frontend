@@ -1,10 +1,13 @@
 import React from 'react';
 import "./feed.css";
+import Share from '../share/Share';
 
 const Feed = () => {
   return (
     <div className='feed'>
-      Feed
+      <div className='feedWrapper'>
+        <Share />
+      </div>
     </div>
   )
 }
