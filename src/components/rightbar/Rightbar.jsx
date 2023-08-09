@@ -3,10 +3,10 @@ import "./rightbar.css";
 import { Users } from "../../dummyData";
 import Online from "../online/Online";
 
-const Rightbar = () => {
-  return (
-    <div className="rightbar">
-      <div className="rightbarWrapper">
+const Rightbar = ({ profile }) => {
+  const HomeRightbar = () => {
+    return (
+      <>
         <div className="birthdayContainer">
           <img
             className="birthdayImg"
@@ -29,6 +29,103 @@ const Rightbar = () => {
             <Online key={u.id} user={u} />
           ))}
         </ul>
+      </>
+    );
+  };
+
+  const ProfileRightbar = () => {
+    return (
+      <>
+        <h4 className="rightbarTitle">User Info</h4>
+        <div className="rightbarInfo">
+          <div className="rightbarInfoItem">
+            <span className="rightbarInfoKey">City:</span>
+            <span className="rightbarInfoValue">Owerri</span>
+          </div>
+          <div className="rightbarInfoItem">
+            <span className="rightbarInfoKey">From:</span>
+            <span className="rightbarInfoValue">Owerri</span>
+          </div>
+          <div className="rightbarInfoItem">
+            <span className="rightbarInfoKey">Situationship:</span>
+            <span className="rightbarInfoValue">Confused</span>
+          </div>
+        </div>
+        <h4 className="rightbarTitle">User Friends</h4>
+        <div className="rightbarFollowings">
+          <div className="rightbarFollowing">
+            <img
+              src="assets/person/default.jpg"
+              alt=""
+              className="rightbarFollowingImg"
+            />
+            <span className="rightbarFollowingName">Elvis Visinho</span>
+          </div>
+          <div className="rightbarFollowing">
+            <img
+              src="assets/person/default.jpg"
+              alt=""
+              className="rightbarFollowingImg"
+            />
+            <span className="rightbarFollowingName">Elvis Visinho</span>
+          </div>
+          <div className="rightbarFollowing">
+            <img
+              src="assets/person/default.jpg"
+              alt=""
+              className="rightbarFollowingImg"
+            />
+            <span className="rightbarFollowingName">Elvis Visinho</span>
+          </div>
+          <div className="rightbarFollowing">
+            <img
+              src="assets/person/default.jpg"
+              alt=""
+              className="rightbarFollowingImg"
+            />
+            <span className="rightbarFollowingName">Elvis Visinho</span>
+          </div>
+          <div className="rightbarFollowing">
+            <img
+              src="assets/person/default.jpg"
+              alt=""
+              className="rightbarFollowingImg"
+            />
+            <span className="rightbarFollowingName">Elvis Visinho</span>
+          </div>
+          <div className="rightbarFollowing">
+            <img
+              src="assets/person/default.jpg"
+              alt=""
+              className="rightbarFollowingImg"
+            />
+            <span className="rightbarFollowingName">Elvis Visinho</span>
+          </div>
+          <div className="rightbarFollowing">
+            <img
+              src="assets/person/default.jpg"
+              alt=""
+              className="rightbarFollowingImg"
+            />
+            <span className="rightbarFollowingName">Elvis Visinho</span>
+          </div>
+          <div className="rightbarFollowing">
+            <img
+              src="assets/person/default.jpg"
+              alt=""
+              className="rightbarFollowingImg"
+            />
+            <span className="rightbarFollowingName">Elvis Visinho</span>
+          </div>
+        </div>
+      </>
+    );
+  };
+
+  return (
+    <div className="rightbar">
+      <div className="rightbarWrapper">
+        <ProfileRightbar />
       </div>
     </div>
   );
