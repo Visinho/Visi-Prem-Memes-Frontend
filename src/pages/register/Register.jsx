@@ -8,7 +8,8 @@ const Register = () => {
         <div className="loginLeft">
           <h3 className="loginLogo">Visi-Prem-Memes</h3>
           <span className="loginDesc">
-          Ready to unlock the comedy vault? Register now and let the laughter begin!
+            Ready to unlock the comedy vault? Register now and let the laughter
+            begin!
           </span>
         </div>
         <div className="loginRight">
@@ -18,8 +19,10 @@ const Register = () => {
             <input placeholder="Password..." className="loginInput" />
             <input placeholder="Password Again..." className="loginInput" />
             <button className="loginButton">Sign Up</button>
-            <button className="loginRegisterButton">Log In 
-            </button>
+            <span className="loginForgot">
+              Already a member of the cruise party??? Sign in and let's make some
+              waves of laughter! <b className="loginForgotPassword">Sign In</b>
+            </span>
           </div>
         </div>
       </div>
