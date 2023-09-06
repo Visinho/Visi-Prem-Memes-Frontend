@@ -1,12 +1,30 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import "./post.css";
 import { MoreVert } from "@material-ui/icons";
-import { Users } from "../../dummyData";
+import axios from "axios";
+import { format } from "timeago.js";
+
 
 const Post = ({ post }) => {
-  const [like, setLike] = useState(post.like);
+  const [like, setLike] = useState(post.likes.length);
   const [isLiked, setIsLiked] = useState(false);
+  const [user, setUser] = useState({});
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+
+  const fetchUser = useCallback(() => {
+    // Your fetch logic here
+    axios.get(`http://localhost:8080/api/users/${post.userId}`)
+      .then(response => {
+        setUser(response.data);
+      })
+      .catch(error => {
+        console.error("Error fetching user:", error);
+      });
+  }, [post.userId]); 
+
+  useEffect(() => {
+    fetchUser();
+  }, [fetchUser]);
 
   const LikeHandler = () => {
     setLike(isLiked ? like - 1 : like + 1);
@@ -20,13 +38,13 @@ const Post = ({ post }) => {
           <div className="postTopLeft">
             <img
               className="postProfileImg"
-              src={Users.filter((u) => u.id === post?.userId)[0].profilePicture}
-              alt="1"
+              src={user.profilePic || PF+'person/default.jpg'}
+              alt=""
             />
             <span className="postUsername">
-              {Users.filter((u) => u.id === post?.userId)[0].username}
+              {user.username}
             </span>
-            <span className="postDate">{post.date}</span>
+            <span className="postDate">{format(post.createdAt)}</span>
           </div>
           <div className="postTopRight">
             <MoreVert />
@@ -36,8 +54,8 @@ const Post = ({ post }) => {
           <span className="postText">{post?.desc}</span>
           <img
             className="postImg"
-            src={PF+post.photo}
-            alt="empty"
+            src={post.imgUrl}
+            alt=""
           />
         </div>
         <div className="postBottom">

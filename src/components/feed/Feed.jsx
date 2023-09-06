@@ -1,16 +1,43 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./feed.css";
 import Share from "../share/Share";
 import Post from "../post/Post";
-import { Posts } from "../../dummyData.js";
+import axios from "axios";
+// import { Posts } from "../../dummyData.js";
 
 const Feed = () => {
+  const [posts, setPosts] = useState([]);
+
+
+  const fetchPosts = () => {
+    axios.get("http://localhost:8080/api/posts/timeline/64d82a0d0db56dfde378c48e")
+      .then(response => {
+        // Handle the successful response here
+        setPosts(response.data);
+      })
+      .catch(error => {
+        // Handle any errors here
+        if (error.response) {
+          console.error("Server error:", error.response.status, error.response.data);
+        } else if (error.request) {
+          console.error("No response from server:", error.request);
+        } else {
+          console.error("Request error:", error.message);
+        }
+      });
+  };
+  
+  useEffect(() => {
+    fetchPosts();
+  }, []);
+  
+
   return (
     <div className="feed">
       <div className="feedWrapper">
         <Share />
-        {Posts.map((p) => (
-          <Post key={p.id} post={p} />
+        {posts.map((p) => (
+          <Post key={p._id} post={p} />
         ))}
       </div>
     </div>
