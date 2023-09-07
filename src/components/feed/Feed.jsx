@@ -5,18 +5,19 @@ import Post from "../post/Post";
 import axios from "axios";
 // import { Posts } from "../../dummyData.js";
 
-const Feed = () => {
+const Feed = ({ username }) => {
   const [posts, setPosts] = useState([]);
 
-
-  const fetchPosts = () => {
-    axios.get("http://localhost:8080/api/posts/timeline/64d82a0d0db56dfde378c48e")
-      .then(response => {
-        // Handle the successful response here
-        setPosts(response.data);
-      })
-      .catch(error => {
-        // Handle any errors here
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const endpoint = username
+        ? `http://localhost:8080/api/posts/profile/${username}`
+        : "http://localhost:8080/api/posts/timeline/64d82a0d0db56dfde378c48e";
+        
+      try {
+        const res = await axios.get(endpoint);
+        setPosts(res.data);
+      } catch (error) {
         if (error.response) {
           console.error("Server error:", error.response.status, error.response.data);
         } else if (error.request) {
@@ -24,12 +25,11 @@ const Feed = () => {
         } else {
           console.error("Request error:", error.message);
         }
-      });
-  };
-  
-  useEffect(() => {
+      }
+    };
     fetchPosts();
-  }, []);
+  }, [username]);
+  
   
 
   return (

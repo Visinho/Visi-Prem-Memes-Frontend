@@ -3,6 +3,7 @@ import "./post.css";
 import { MoreVert } from "@material-ui/icons";
 import axios from "axios";
 import { format } from "timeago.js";
+import { Link } from "react-router-dom";
 
 
 const Post = ({ post }) => {
@@ -36,11 +37,13 @@ const Post = ({ post }) => {
       <div className="postWrapper">
         <div className="postTop">
           <div className="postTopLeft">
+            <Link to={`profile/${user.username}`}>
             <img
               className="postProfileImg"
               src={user.profilePic || PF+'person/default.jpg'}
               alt=""
             />
+            </Link>
             <span className="postUsername">
               {user.username}
             </span>
@@ -54,7 +57,7 @@ const Post = ({ post }) => {
           <span className="postText">{post?.desc}</span>
           <img
             className="postImg"
-            src={post.imgUrl}
+            src={PF+post.imgUrl}
             alt=""
           />
         </div>
