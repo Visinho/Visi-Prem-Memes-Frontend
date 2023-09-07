@@ -17,6 +17,7 @@ const Feed = ({ username }) => {
       try {
         const res = await axios.get(endpoint);
         setPosts(res.data);
+        console.log(res.data)
       } catch (error) {
         if (error.response) {
           console.error("Server error:", error.response.status, error.response.data);

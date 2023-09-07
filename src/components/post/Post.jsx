@@ -14,9 +14,11 @@ const Post = ({ post }) => {
 
   const fetchUser = useCallback(() => {
     // Your fetch logic here
-    axios.get(`http://localhost:8080/api/users/${post.userId}`)
+    axios.get(`http://localhost:8080/api/users?userId=${post.userId}`)
       .then(response => {
         setUser(response.data);
+        console.log("post.userId:", post.userId);
+        console.log(response.data);
       })
       .catch(error => {
         console.error("Error fetching user:", error);
@@ -26,6 +28,15 @@ const Post = ({ post }) => {
   useEffect(() => {
     fetchUser();
   }, [fetchUser]);
+
+  // useEffect(() => {
+  //   const fetchUser = async () => {
+  //     const res = await axios.get(`http://localhost:8080/api/users/${post.userId}`);
+  //     setUser(res.data)
+  //     console.log(res.data)
+  //   };
+  //   fetchUser();
+  // }, [post.userId])
 
   const LikeHandler = () => {
     setLike(isLiked ? like - 1 : like + 1);
@@ -45,7 +56,7 @@ const Post = ({ post }) => {
             />
             </Link>
             <span className="postUsername">
-              {user.username}
+              Name
             </span>
             <span className="postDate">{format(post.createdAt)}</span>
           </div>

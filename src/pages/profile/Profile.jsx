@@ -1,12 +1,30 @@
-import React from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import Topbar from "../../components/topbar/Topbar";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Rightbar from "../../components/rightbar/Rightbar";
 import Feed from "../../components/feed/Feed";
 import "./profile.css";
+import axios from "axios";
 
 const Profile = () => {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  const [user, setUser] = useState({});
+
+  const fetchUser = useCallback(() => {
+    // Your fetch logic here
+    axios.get(`http://localhost:8080/api/users?username=ElvisVisinho`)
+      .then(response => {
+        setUser(response.data);
+      })
+      .catch(error => {
+        console.error("Error fetching user:", error);
+      });
+  }, []); 
+
+  useEffect(() => {
+    fetchUser();
+  }, [fetchUser]); 
+
   return (
     <>
     <Topbar />
@@ -27,8 +45,8 @@ const Profile = () => {
             />
           </div>
           <div className="profileInfo">
-              <h4 className="profileInfoName">Elvis Visinho</h4>
-              <span className="profileInfoDesc">Violence Instigator extraordinaire!!!</span>
+              <h4 className="profileInfoName">{user.username}</h4>
+              <span className="profileInfoDesc">{user.desc}</span>
           </div>
         </div>
         <div className="profileRightBottom">
