@@ -25,6 +25,8 @@ const Post = ({ post }) => {
       });
   }, [post.userId]); 
 
+  console.log("user", user)
+
   useEffect(() => {
     fetchUser();
   }, [fetchUser]);
@@ -56,7 +58,7 @@ const Post = ({ post }) => {
             />
             </Link>
             <span className="postUsername">
-              Name
+              {user.username}
             </span>
             <span className="postDate">{format(post.createdAt)}</span>
           </div>

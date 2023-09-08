@@ -8,11 +8,12 @@ import axios from "axios";
 const Feed = ({ username }) => {
   const [posts, setPosts] = useState([]);
 
+  console.log({username});
   useEffect(() => {
     const fetchPosts = async () => {
       const endpoint = username
         ? `http://localhost:8080/api/posts/profile/${username}`
-        : "http://localhost:8080/api/posts/timeline/64d82a0d0db56dfde378c48e";
+        : `http://localhost:8080/api/posts/timeline/64d82a0d0db56dfde378c48e`;
         
       try {
         const res = await axios.get(endpoint);
