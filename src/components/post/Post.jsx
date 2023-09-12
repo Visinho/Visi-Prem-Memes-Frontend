@@ -17,28 +17,16 @@ const Post = ({ post }) => {
     axios.get(`http://localhost:8080/api/users?userId=${post.userId}`)
       .then(response => {
         setUser(response.data);
-        console.log("post.userId:", post.userId);
-        console.log(response.data);
       })
       .catch(error => {
         console.error("Error fetching user:", error);
       });
   }, [post.userId]); 
 
-  console.log("user", user)
 
   useEffect(() => {
     fetchUser();
   }, [fetchUser]);
-
-  // useEffect(() => {
-  //   const fetchUser = async () => {
-  //     const res = await axios.get(`http://localhost:8080/api/users/${post.userId}`);
-  //     setUser(res.data)
-  //     console.log(res.data)
-  //   };
-  //   fetchUser();
-  // }, [post.userId])
 
   const LikeHandler = () => {
     setLike(isLiked ? like - 1 : like + 1);
@@ -70,7 +58,8 @@ const Post = ({ post }) => {
           <span className="postText">{post?.desc}</span>
           <img
             className="postImg"
-            src={PF+post.imgUrl}
+            // src={PF+post.imgUrl}  
+            src={post.imgUrl || PF+"post/3.jpeg"}
             alt=""
           />
         </div>

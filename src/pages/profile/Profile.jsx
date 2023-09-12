@@ -5,21 +5,23 @@ import Rightbar from "../../components/rightbar/Rightbar";
 import Feed from "../../components/feed/Feed";
 import "./profile.css";
 import axios from "axios";
+import { useParams } from "react-router";
 
 const Profile = () => {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const [user, setUser] = useState({});
+  const username = useParams().username;
 
   const fetchUser = useCallback(() => {
     // Your fetch logic here
-    axios.get(`http://localhost:8080/api/users?username=ElvisVisinho`)
+    axios.get(`http://localhost:8080/api/users?username=${username}`)
       .then(response => {
         setUser(response.data);
       })
       .catch(error => {
         console.error("Error fetching user:", error);
       });
-  }, []); 
+  }, [username]); 
 
   useEffect(() => {
     fetchUser();
@@ -35,7 +37,7 @@ const Profile = () => {
           <div className="profileCover">
             <img
               className="profileCoverImg"
-              src={`${PF}post/3.jpeg`}
+              src={user.coverPicture || PF+"post/3.jpeg"}
               alt=""
             />
             <img
@@ -50,8 +52,8 @@ const Profile = () => {
           </div>
         </div>
         <div className="profileRightBottom">
-          <Feed username="ElvisVisinho"/>
-          <Rightbar profile/>
+          <Feed username={username}/>
+          <Rightbar user={user} />
         </div>
       </div>
     </div>
