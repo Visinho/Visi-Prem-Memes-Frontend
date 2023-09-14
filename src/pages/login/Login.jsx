@@ -1,14 +1,23 @@
-import React, {useRef} from "react";
+import React, { useContext, useRef } from "react";
 import "./login.css";
+import { loginCall } from "../../apiCalls";
+import { AuthContext } from "../../context/AuthContext";
+import { CircularProgress } from "@material-ui/core";
 
 const Login = () => {
   const email = useRef();
   const password = useRef();
+  const { user, isFetching, error, dispatch } = useContext(AuthContext);
 
   const handleclick = (e) => {
     e.preventDefault();
-    alert("Clicked!")
-  }
+    loginCall(
+      { email: email.current.value, password: password.current.value },
+      dispatch
+    );
+  };
+
+  console.log(user);
 
   return (
     <div className="login">
@@ -21,14 +30,38 @@ const Login = () => {
         </div>
         <div className="loginRight">
           <form className="loginBox" onSubmit={handleclick}>
-            <input placeholder="Email..." type="email" className="loginInput" ref={email} required/>
-            <input placeholder="Password..." type="password" className="loginInput" ref={password} required minLength={6}/>
-            <button className="loginButton">Log in</button>
+            <input
+              placeholder="Email..."
+              type="email"
+              className="loginInput"
+              ref={email}
+              required
+            />
+            <input
+              placeholder="Password..."
+              type="password"
+              className="loginInput"
+              ref={password}
+              required
+              minLength={6}
+            />
+            <button className="loginButton" type="submit" disabled={isFetching}>
+              {isFetching ? (
+                <CircularProgress color="white" size={20} />
+              ) : (
+                "Log in"
+              )}
+            </button>
             <span className="loginForgot">
               Password's playing hide and seek with you? No worries, we gat you
               covered! <b className="loginForgotPassword">Click Here</b>
             </span>
-            <button className="loginRegisterButton">Join the laughter parade! 
+            <button className="loginRegisterButton">
+            {isFetching ? (
+                <CircularProgress color="white" size={20} />
+              ) : (
+                "Join the laughter parade!"
+              )}
             </button>
           </form>
         </div>
