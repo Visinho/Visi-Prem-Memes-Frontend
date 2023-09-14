@@ -1,7 +1,20 @@
 import React from "react";
 import "./register.css";
+import { useRef } from "react";
 
 const Register = () => {
+  const username = useRef();
+  const email = useRef();
+  const password = useRef();
+  const passwordAgain = useRef();
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    if(passwordAgain.current.value !== password.current.value){
+      password.current.setCustomValidity("Passwords do not match!!!")
+    }
+  };
+
   return (
     <div className="login">
       <div className="loginWrapper">
@@ -13,17 +26,43 @@ const Register = () => {
           </span>
         </div>
         <div className="loginRight">
-          <div className="loginBox">
-            <input placeholder="Username..." className="loginInput" />
-            <input placeholder="Email..." className="loginInput" />
-            <input placeholder="Password..." className="loginInput" />
-            <input placeholder="Password Again..." className="loginInput" />
-            <button className="loginButton">Sign Up</button>
+          <form onSubmit={handleClick} className="loginBox">
+            <input
+              placeholder="Username..."
+              ref={username}
+              className="loginInput"
+              required
+            />
+            <input
+              placeholder="Email..."
+              ref={email}
+              className="loginInput"
+              required
+              type="email"
+            />
+            <input
+              placeholder="Password..."
+              ref={password}
+              className="loginInput"
+              required
+              type="password"
+              minLength={6}
+            />
+            <input
+              placeholder="Password Again..."
+              ref={passwordAgain}
+              className="loginInput"
+              required
+              type="password"
+              minLength={6}
+            />
+            <button className="loginButton" type="submit">Sign Up</button>
             <span className="loginForgot">
-              Already a member of the cruise party??? Sign in and let's make some
-              waves of laughter! <b className="loginForgotPassword">Sign In</b>
+              Already a member of the cruise party??? Sign in and let's make
+              some waves of laughter!{" "}
+              <b className="loginForgotPassword">Sign In</b>
             </span>
-          </div>
+          </form>
         </div>
       </div>
     </div>

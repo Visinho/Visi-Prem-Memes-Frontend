@@ -9,7 +9,7 @@ const Login = () => {
   const password = useRef();
   const { user, isFetching, error, dispatch } = useContext(AuthContext);
 
-  const handleclick = (e) => {
+  const handleClick = (e) => {
     e.preventDefault();
     loginCall(
       { email: email.current.value, password: password.current.value },
@@ -29,7 +29,7 @@ const Login = () => {
           </span>
         </div>
         <div className="loginRight">
-          <form className="loginBox" onSubmit={handleclick}>
+          <form className="loginBox" onSubmit={handleClick}>
             <input
               placeholder="Email..."
               type="email"
