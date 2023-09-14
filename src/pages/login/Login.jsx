@@ -47,7 +47,7 @@ const Login = () => {
             />
             <button className="loginButton" type="submit" disabled={isFetching}>
               {isFetching ? (
-                <CircularProgress color="white" size={20} />
+                <CircularProgress style={{color: "white"}} size={20} />
               ) : (
                 "Log in"
               )}
@@ -58,7 +58,7 @@ const Login = () => {
             </span>
             <button className="loginRegisterButton">
             {isFetching ? (
-                <CircularProgress color="white" size={20} />
+                <CircularProgress style={{color: "white"}} size={20} />
               ) : (
                 "Join the laughter parade!"
               )}
