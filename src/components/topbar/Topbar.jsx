@@ -1,13 +1,25 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./topbar.css";
 import { Search, Person, Chat, Notifications } from "@material-ui/icons";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 
 const Topbar = () => {
+  const { user } = useContext(AuthContext);
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+
+  if(!user) {
+    return (
+      <div>Loading...</div>
+    )
+  }
+
+  console.log(user);
+
   return (
     <div className="topbarContainer">
       <div className="topbarLeft">
-        <Link to="/" style={{textDecoration:"none"}}>
+        <Link to="/" style={{ textDecoration: "none" }}>
           <span className="logo">Visi-Prem-Memes</span>
         </Link>
       </div>
@@ -40,7 +52,17 @@ const Topbar = () => {
           </div>
         </div>
 
-        <img src="/assets/person/default.jpg" alt="" className="topbarImg" />
+      <Link to={`/profile/${user.user.username}`}>
+        <img
+          src={
+            user.profilePicture
+            ? PF + user.profilePicture
+            : PF + "person/default.jpg"
+          }
+          alt=""
+          className="topbarImg"
+          />
+        </Link>
       </div>
     </div>
   );

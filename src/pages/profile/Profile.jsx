@@ -17,6 +17,7 @@ const Profile = () => {
     axios.get(`http://localhost:8080/api/users?username=${username}`)
       .then(response => {
         setUser(response.data);
+        console.log(username);
       })
       .catch(error => {
         console.error("Error fetching user:", error);
