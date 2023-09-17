@@ -14,8 +14,6 @@ const Topbar = () => {
     )
   }
 
-  console.log(user);
-
   return (
     <div className="topbarContainer">
       <div className="topbarLeft">
@@ -52,7 +50,8 @@ const Topbar = () => {
           </div>
         </div>
 
-      <Link to={`/profile/${user.user.username}`}>
+      {/* <Link to={`/profile/${user.user.username}`}> */}
+      <Link to={`/profile/${user.username}`}>
         <img
           src={
             user.profilePicture
