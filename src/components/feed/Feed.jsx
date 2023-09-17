@@ -1,18 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./feed.css";
 import Share from "../share/Share";
 import Post from "../post/Post";
 import axios from "axios";
+import { AuthContext } from "../../context/AuthContext";
 // import { Posts } from "../../dummyData.js";
 
 const Feed = ({ username }) => {
   const [posts, setPosts] = useState([]);
+  const {user} = useContext(AuthContext)
 
   useEffect(() => {
     const fetchPosts = async () => {
       const endpoint = username
         ? `http://localhost:8080/api/posts/profile/${username}`
-        : `http://localhost:8080/api/posts/timeline/64d82a0d0db56dfde378c48e`;
+        : `http://localhost:8080/api/posts/timeline/${user._id}`;
         
       try {
         const res = await axios.get(endpoint);
@@ -28,7 +30,7 @@ const Feed = ({ username }) => {
       }
     };
     fetchPosts();
-  }, [username]);
+  }, [username, user._id]);
   
   
 
