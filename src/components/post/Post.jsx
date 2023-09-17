@@ -1,9 +1,10 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import "./post.css";
 import { MoreVert } from "@material-ui/icons";
 import axios from "axios";
 import { format } from "timeago.js";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 
 
 const Post = ({ post }) => {
@@ -11,6 +12,7 @@ const Post = ({ post }) => {
   const [isLiked, setIsLiked] = useState(false);
   const [user, setUser] = useState({});
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  const {user: currentUser} = useContext(AuthContext);
 
   const fetchUser = useCallback(() => {
     // Your fetch logic here
@@ -29,6 +31,11 @@ const Post = ({ post }) => {
   }, [fetchUser]);
 
   const LikeHandler = () => {
+    try {
+      axios.put("http://localhost:8080/api/posts/"+post._id+"/like", {userId: currentUser._id})
+    } catch (error) {
+      
+    }
     setLike(isLiked ? like - 1 : like + 1);
     setIsLiked(!isLiked);
   };
