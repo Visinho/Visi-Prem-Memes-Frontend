@@ -14,6 +14,11 @@ const Post = ({ post }) => {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const {user: currentUser} = useContext(AuthContext);
 
+  //Check if a user already liked the post
+  useEffect(() => {
+    setIsLiked(post.likes.includes(currentUser._id));
+  }, [currentUser._id, post.likes])
+
   const fetchUser = useCallback(() => {
     // Your fetch logic here
     axios.get(`http://localhost:8080/api/users?userId=${post.userId}`)
